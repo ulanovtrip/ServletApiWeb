@@ -1,0 +1,46 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--    <servlet>-->
+    <!--        <servlet-name>profileServlet</servlet-name>-->
+    <!--        &lt;!&ndash;        путь к сервлету&ndash;&gt;-->
+    <!--        <servlet-class>ru.itis.site.web.servlets.SearchServlet</servlet-class>-->
+    <!--    </servlet>-->
+
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>profileServlet</servlet-name>-->
+    <!--        &lt;!&ndash;это то, на что будет реагировать сервлет в браузере&ndash;&gt;-->
+    <!--        &lt;!&ndash;/profile/** означает, что это будет срабатывать на все запросы начинающиеся с /profile&ndash;&gt;-->
+    <!--        <url-pattern>/profile/*</url-pattern>-->
+    <!--    </servlet-mapping>-->
+
+
+
+    <!--Очерёдность выполнения фильтров соответствует объявлению их в файле .xml-->
+
+    <filter>
+        <filter-name>logFilter</filter-name>
+        <filter-class>ru.itis.site.filters.LogFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>logFilter</filter-name>
+        <!--будет всё перехватывать-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>bodiesFilter</filter-name>
+        <filter-class>ru.itis.site.filters.FormConverterFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>bodiesFilter</filter-name>
+        <!--будет всё перехватывать-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>
